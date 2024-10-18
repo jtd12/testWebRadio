@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Web Radio</title>
+    <style>
+          body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .form-container {
+            margin: 20px 0;
+        }
+
+        .deezer-widget {
+            width: 100%;
+            max-width: 300px; /* Ajustez la largeur maximale */
+            height: 380px;     /* Ajustez la hauteur */
+            border: none;
+            margin: 20px auto;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 10px;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+       <div class="form-container">
+         <input type="text" id="playlistInput" placeholder="Entrez l'ID de la playlist">
+        <button onclick="changePlaylist()">Charger la playlist</button>
+
+    </div>
+
+    <div class="radio-container">
+        <h1>Bienvenue sur Ma Web Radio Titi Melomane</h1>
+        <p>Écoutez notre station en direct</p>
+</div>
+        <!-- Lecteur audio pour la radio -->
+         <iframe id="deezerWidget"
+		 class="deezer-widget" 
+        scrolling="no" 
+        frameborder="0" 
+        allowtransparency="true" 
+		allow="autoplay; encrypted-media"
+        src="https://widget.deezer.com/widget/dark/playlist/13181749943"> </iframe>
+     
+	  <!-- Lecteur audio pour la radio -->
+       
+
+
+    <script>
+        function changePlaylist() {
+		
+            // Changer le contenu de l'iframe en fonction de l'ID de la playlist sélectionnée
+            const playlistId = document.getElementById('playlistInput').value;
+
+            // Vérifiez que l'utilisateur a bien entré un ID
+            if (playlistId.trim() === "") {
+                alert("Veuillez entrer un ID de playlist valide.");
+                return;
+            }
+
+            // Met à jour l'URL de l'iframe pour afficher la nouvelle playlist
+            const widget = document.getElementById('deezerWidget');
+            widget.src = `https://widget.deezer.com/widget/dark/playlist/${playlistId}`;
+       
+		}
+    </script>
+	
+	
+
+
+</body>
+</html>
